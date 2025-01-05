@@ -74,6 +74,10 @@ entities:
         externalId: key
         type: String
         indexed: true
+      - name: implementation_plan
+        externalId: $.fields.customfield_10050.content[0].content[0].text
+        type: String
+        indexed: true
       - name: fields__statuscategorychangedate
         externalId: fields__statuscategorychangedate
         type: DateTime
@@ -164,7 +168,6 @@ entities:
       - name: fields__priority__name
         externalId: fields__priority__name
         type: String
-        indexed: true
       - name: fields__priority__id
         externalId: fields__priority__id
         type: String
@@ -497,16 +500,6 @@ relationships:
     displayName: Group Member
     fromAttribute: GroupMember.groupId
     toAttribute: Group.groupId
-  # Path relationship based on the previous two relationships.
-  # (User) -[Group]-> (Group)
-  # UserMemberGroup:
-  #   name: Group
-  #   displayName: User Member Group
-  #   path:
-  #     - relationship: UserMember
-  #       direction: Forward
-  #     - relationship: GroupMember
-  #       direction: Forward
   # (Object) -[ObjectMember]-> (Workspace)
   ObjectMember:
     name: ObjectMember
